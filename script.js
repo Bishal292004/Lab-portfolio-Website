@@ -59,7 +59,7 @@
       tech: ["HTML", "CSS", "Javascript"],
       category: "mini",
       stack: "web",
-    }
+    },
     // {
     //   title: "Calculator",
     //   description:
