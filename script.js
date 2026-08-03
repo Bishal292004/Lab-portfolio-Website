@@ -52,6 +52,14 @@
       category: "mini",
       stack: "web",
     },
+    {
+     title: "Quiz App",
+      description: "A simple quiz app which displays the score after answering all the questions.",
+      folder: "quiz",
+      tech: ["HTML", "CSS", "Javascript"],
+      category: "mini",
+      stack: "web",
+    }
     // {
     //   title: "Calculator",
     //   description:

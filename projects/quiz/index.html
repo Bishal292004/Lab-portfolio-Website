@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internet & Web Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="bg-shape shape-a"></div>
+  <div class="bg-shape shape-b"></div>
+
+  <main class="card" id="card">
+
+    <!-- START SCREEN -->
+    <section class="screen" id="start-screen">
+      <p class="eyebrow">20 Questions &middot; Networking Basics</p>
+      <h1 class="title">Quiz Questions</h1>
+      <p class="subtitle">Test what you know about the internet, the web, and how they work &mdash; order shuffles every time you play.</p>
+      <button class="btn-primary" id="start-btn">Start Quiz</button>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section class="screen hidden" id="quiz-screen">
+      <div class="quiz-header">
+        <span class="q-count" id="q-count">Question 1 / 20</span>
+        <span class="q-score" id="q-score-live">Score: 0</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <h2 class="question" id="question-text">Here will be the Questions?</h2>
+
+      <div class="answers-grid" id="answers-grid">
+        <button class="answer-btn" data-index="0"></button>
+        <button class="answer-btn" data-index="1"></button>
+        <button class="answer-btn" data-index="2"></button>
+        <button class="answer-btn" data-index="3"></button>
+      </div>
+
+      <button class="btn-primary" id="next-btn" disabled>Next</button>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section class="screen hidden" id="result-screen">
+      <p class="eyebrow" id="result-eyebrow">Quiz Complete</p>
+      <h1 class="title" id="result-title">Nice work!</h1>
+      <div class="score-circle">
+        <span class="score-number" id="score-number">0</span>
+        <span class="score-total" id="score-total">/ 20</span>
+      </div>
+      <p class="subtitle" id="result-message">You got most of them right.</p>
+      <button class="btn-primary" id="retry-btn">Play Again</button>
+    </section>
+
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>
