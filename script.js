@@ -68,15 +68,15 @@
       category: "mini",
       stack: "web",
     },
-    // {
-    //   title: "Calculator",
-    //   description:
-    //     "A responsive scientific calculator supporting keyboard input and standard operations.",
-    //   folder: "calculator",
-    //   tech: ["HTML", "CSS", "JavaScript"],
-    //   category: "mini",
-    //   stack: "js",
-    // },
+    {
+      title: "Calculator",
+      description:
+        "A responsive scientific calculator supporting keyboard input and standard operations.",
+      folder: "calculator",
+      tech: ["HTML", "CSS", "JavaScript"],
+      category: "mini",
+      stack: "js",
+    },
     // {
     //   title: "Random Cat Facts",
     //   description:
