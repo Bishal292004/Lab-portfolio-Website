@@ -60,6 +60,14 @@
       category: "mini",
       stack: "web",
     },
+    {
+      title: "Shopping",
+      description: "A simple shooping webpage with some listed items and with cart and checkout features.",
+      folder: "shopping",
+      tech: ["HTML", "CSS", "Javascript"],
+      category: "mini",
+      stack: "web",
+    },
     // {
     //   title: "Calculator",
     //   description:

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopEx — Shop Everything</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <button class="logo" id="logoBtn" aria-label="ShopEx home">
+      <span class="logo-mark">Ex</span><span class="logo-text">Shop<em>Ex</em></span>
+    </button>
+
+    <div class="search-wrap">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M11.5 11.5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input type="text" id="searchInput" placeholder="Search headphones, sneakers, mugs…" autocomplete="off">
+    </div>
+
+    <nav class="header-actions">
+      <button class="icon-btn" id="homeNavBtn" title="Home">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 11.5 12 4l8 7.5M6 10v9h5v-5h2v5h5v-9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="icon-btn cart-btn" id="cartNavBtn" title="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="20" r="1.4" fill="currentColor"/><circle cx="17.5" cy="20" r="1.4" fill="currentColor"/></svg>
+        <span>Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HOME VIEW ===== -->
+<main id="homeView">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Fresh stock · every category · one price tag</p>
+      <h1>Everything you're<br>shopping for, <em>tagged &amp; ready.</em></h1>
+      <p class="hero-sub">Electronics, fashion, home, books and more — browse the shelf, punch it into your cart, checkout in seconds.</p>
+    </div>
+  </section>
+
+  <section class="category-bar" id="categoryBar" aria-label="Filter by category"></section>
+
+  <section class="product-section">
+    <div class="product-section-head">
+      <h2 id="resultsHeading">All items</h2>
+      <p id="resultsCount" class="results-count"></p>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+    <p class="empty-state" id="noResults" hidden>No items match that search. Try another word or category.</p>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark small">Ex</span>
+        <p>ShopEx — a small demo shelf. Built for browsing, not billing.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Shop</h4>
+          <a href="#" data-cat="all">All items</a>
+          <a href="#" data-cat="Electronics">Electronics</a>
+          <a href="#" data-cat="Fashion">Fashion</a>
+        </div>
+        <div>
+          <h4>Help</h4>
+          <a href="#" id="footerCartLink">Your cart</a>
+          <a href="#">Shipping info</a>
+          <a href="#">Returns</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#">About ShopEx</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 ShopEx. All prices in INR.</p>
+  </footer>
+</main>
+
+<!-- ===== CART VIEW ===== -->
+<main id="cartView" hidden>
+  <section class="cart-page">
+    <div class="cart-page-head">
+      <h1>Your cart</h1>
+      <button class="text-btn" id="continueShoppingBtn">← Continue shopping</button>
+    </div>
+
+    <div class="cart-layout">
+      <div class="cart-items" id="cartItems">
+        <!-- cart line items injected here -->
+      </div>
+
+      <aside class="cart-summary">
+        <h3>Order summary</h3>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="summarySubtotal" class="mono">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>GST (18%)</span>
+          <span id="summaryGst" class="mono">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span id="summaryDelivery" class="mono">Free</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Total</span>
+          <span id="summaryTotal" class="mono">₹0</span>
+        </div>
+
+        <label class="promo-label" for="promoInput">Promo code</label>
+        <div class="promo-row">
+          <input type="text" id="promoInput" placeholder="Try SHOPEX10">
+          <button id="promoBtn" class="btn-ghost">Apply</button>
+        </div>
+        <p class="promo-msg" id="promoMsg"></p>
+
+        <button class="btn-checkout" id="checkoutBtn">Checkout securely</button>
+        <p class="secure-note">🔒 Test checkout — no real payment is made.</p>
+      </aside>
+    </div>
+
+    <div class="cart-empty" id="cartEmptyState" hidden>
+      <p class="cart-empty-mark">🛒</p>
+      <h2>Your cart is empty</h2>
+      <p>Items you tag with "Add to cart" will land here.</p>
+      <button class="btn-primary" id="emptyCartShopBtn">Start shopping</button>
+    </div>
+  </section>
+</main>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ===== CHECKOUT CONFIRMATION MODAL ===== -->
+<div class="modal-overlay" id="checkoutModal" hidden>
+  <div class="modal-card">
+    <div class="modal-stamp">✓</div>
+    <h2>Order placed</h2>
+    <p id="modalOrderId" class="mono modal-order-id"></p>
+    <p class="modal-copy">Thanks for shopping with ShopEx. This is a demo order — nothing was actually charged.</p>
+    <button class="btn-primary" id="modalCloseBtn">Back to shopping</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
