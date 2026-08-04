@@ -343,8 +343,8 @@ function renderProducts() {
     <article class="product-card">
       
       <div class="product-thumb" style="background:${thumbColor(p.category)}">
-  <img src="${p.image}" alt="${p.name}" class="product-image">
-</div>
+        <img src="${p.image}" alt="${p.name}" class="product-image">
+      </div>
       <div class="product-body">
         <h3 class="product-name">${p.name}</h3>
         <p class="product-desc">${p.desc}</p>
