@@ -1,0 +1,274 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #eef2f7;
+  --card: #ffffff;
+  --display: #f7f9fc;
+  --text: #172033;
+  --muted: #7b8496;
+  --key: #f1f4f8;
+  --key-hover: #e6ebf2;
+  --operator: #e8edf7;
+  --accent: #4263eb;
+  --accent-hover: #3451c7;
+  --danger: #ffe7e7;
+  --danger-text: #d93636;
+  --shadow: 0 22px 55px rgba(27, 39, 66, 0.14);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+button {
+  font: inherit;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  width: min(100%, 480px);
+}
+
+.calculator {
+  background: var(--card);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  overflow: hidden;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.topbar h1 {
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.topbar p {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 3px;
+}
+
+.mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  background: #edf1ff;
+  border: 1px solid #dce3ff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.mode-toggle:hover {
+  background: #e1e7ff;
+}
+
+.toggle-icon {
+  font-size: 0.95rem;
+}
+
+.display {
+  min-height: 145px;
+  background: var(--display);
+  border: 1px solid #e8ecf2;
+  border-radius: 20px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  overflow: hidden;
+}
+
+.history {
+  min-height: 22px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.expression {
+  min-height: 38px;
+  margin-top: 5px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
+.result {
+  margin-top: 3px;
+  font-size: clamp(1.7rem, 7vw, 2.35rem);
+  font-weight: 800;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.scientific-panel {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 9px;
+  margin-bottom: 10px;
+}
+
+.scientific-panel[hidden] {
+  display: none;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  min-height: 62px;
+  border-radius: 16px;
+  background: var(--key);
+  color: var(--text);
+  font-size: 1.12rem;
+  font-weight: 700;
+  transition: transform 0.08s ease, background 0.15s ease;
+  user-select: none;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key.operator,
+.key.function {
+  background: var(--operator);
+  color: var(--accent);
+}
+
+.key.function {
+  min-height: 52px;
+  font-size: 0.94rem;
+}
+
+.key.danger {
+  background: var(--danger);
+  color: var(--danger-text);
+}
+
+.key.equals {
+  background: var(--accent);
+  color: #fff;
+}
+
+.key.equals:hover {
+  background: var(--accent-hover);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  margin-top: 16px;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 10px;
+  }
+
+  .calculator {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .topbar {
+    margin-bottom: 12px;
+  }
+
+  .topbar h1 {
+    font-size: 1.2rem;
+  }
+
+  .mode-toggle {
+    padding: 9px 10px;
+  }
+
+  .display {
+    min-height: 128px;
+    border-radius: 16px;
+    padding: 13px 14px;
+  }
+
+  .keypad,
+  .scientific-panel {
+    gap: 7px;
+  }
+
+  .key {
+    min-height: 58px;
+    border-radius: 13px;
+  }
+
+  .key.function {
+    min-height: 48px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 370px) {
+  body {
+    padding: 6px;
+  }
+
+  .calculator {
+    padding: 10px;
+  }
+
+  .mode-toggle span:last-child {
+    display: none;
+  }
+
+  .key {
+    min-height: 53px;
+  }
+
+  .scientific-panel {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key,
+  .mode-toggle {
+    transition: none;
+  }
+}
