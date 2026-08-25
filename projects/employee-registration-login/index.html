@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 50px 30px;
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 15px;
+            font-size: 36px;
+        }
+
+        p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .register-btn {
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: #2563eb;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Welcome</h1>
+
+        <p>
+            Welcome to our employee portal.
+            Click the button below to continue to employee registration.
+        </p>
+
+        <button class="register-btn" onclick="goToRegistration()">
+            Employee Registration
+        </button>
+    </div>
+
+    <script>
+        function goToRegistration() {
+            // Replace this URL with your actual hosted registration webpage
+            window.location.href = "https://bishal292004.github.io/Employee_Registration_Frontend/";
+        }
+    </script>
+
+</body>
+</html>
