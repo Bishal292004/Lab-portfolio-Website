@@ -77,15 +77,15 @@
       category: "mini",
       stack: "js",
     },
-    // {
-    //   title: "Random Cat Facts",
-    //   description:
-    //     "Fetches and displays random cat facts and images from a public API on each click.",
-    //   folder: "random-cat-facts",
-    //   tech: ["JavaScript", "REST API"],
-    //   category: "mini",
-    //   stack: "js",
-    // },
+    {
+      title: "Employee registration & login form.",
+      description:
+        "The Employee can register usinf basic details, those details are stored in an online MongoDB Atlas database, and the backend express server runs on the vercel. Combine all this and a complete full stack employe registration and login webpage is done.",
+      folder: "employee-registration-login",
+      tech: ["HTML5","CSS","JavaScript","Nodejs","Expressjs","MongoDB Atlas","Vercel"],
+      category: "mini",
+      stack: "full-stack",
+    },
     // {
     //   title: "Portfolio Website",
     //   description:
