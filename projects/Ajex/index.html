@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beginner-friendly AJAX news card website.">
+    <title>Orbit News | AJAX News Cards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <p class="eyebrow">AJAX / JAVASCRIPT PROJECT</p>
+            <h1>Orbit <span>News</span></h1>
+            <p class="subtitle">Fresh stories from the world of space, delivered one request at a time.</p>
+        </div>
+    </header>
+    <main class="page-content">
+        <section class="news-section" aria-labelledby="latest-news-heading">
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">THE LATEST</p>
+                    <h2 id="latest-news-heading">Stories worth exploring</h2>
+                </div>
+                <p id="article-count" class="article-count" aria-live="polite"></p>
+            </div>
+
+            <p id="loading-message" class="status-message" role="status">Loading the latest stories...</p>
+            <p id="error-message" class="status-message error-message" role="alert" hidden></p>
+            <p id="empty-message" class="status-message" hidden>No stories were found right now.</p>
+
+            <div id="news-container" class="news-grid"></div>
+
+            <div class="load-more-area">
+                <button id="load-more-button" class="load-more-button" type="button">
+                    Load More News <span aria-hidden="true">↓</span>
+                </button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

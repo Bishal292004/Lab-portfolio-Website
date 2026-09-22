@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Department of Computer Science</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="auth-body">
+
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+
+                <div class="logo-icon">
+                    PU
+                </div>
+
+                <div class="logo-text">
+
+                    <strong>
+                        Computer Science
+                    </strong>
+
+                    <span>
+                        Pondicherry University
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <a href="index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+
+                <div class="auth-icon">
+                    👤
+                </div>
+
+                <h1>
+                    Create Account
+                </h1>
+
+                <p>
+                    Register as a student of the department
+                </p>
+
+            </div>
+
+
+            <!-- Registration Form -->
+
+            <form id="registerForm" novalidate>
+
+
+                <!-- Full Name -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <small class="error-message" id="nameError"></small>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="example@email.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <small class="error-message" id="emailError"></small>
+
+                </div>
+
+
+                <!-- Student ID -->
+
+                <div class="form-group">
+
+                    <label for="studentId">
+                        Student / Roll Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentId"
+                        name="studentId"
+                        placeholder="Enter your roll number"
+                        required
+                    >
+
+                    <small class="error-message" id="studentIdError"></small>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required
+                    >
+
+                    <small class="error-message" id="phoneError"></small>
+
+                </div>
+
+
+                <!-- Course -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="course">
+                            Course
+                        </label>
+
+                        <select
+                            id="course"
+                            name="course"
+                            required
+                        >
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                            <option value="BSc Computer Science">
+                                B.Sc. Computer Science
+                            </option>
+
+                            <option value="MCA">
+                                MCA
+                            </option>
+
+                            <option value="MSc Computer Science">
+                                M.Sc. Computer Science
+                            </option>
+
+                            <option value="PhD Computer Science">
+                                Ph.D. Computer Science
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Semester -->
+
+                    <div class="form-group">
+
+                        <label for="semester">
+                            Semester
+                        </label>
+
+                        <select
+                            id="semester"
+                            name="semester"
+                            required
+                        >
+
+                            <option value="">
+                                Select Semester
+                            </option>
+
+                            <option value="1">
+                                1st Semester
+                            </option>
+
+                            <option value="2">
+                                2nd Semester
+                            </option>
+
+                            <option value="3">
+                                3rd Semester
+                            </option>
+
+                            <option value="4">
+                                4th Semester
+                            </option>
+
+                            <option value="5">
+                                5th Semester
+                            </option>
+
+                            <option value="6">
+                                6th Semester
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <small class="password-hint">
+                        Use at least 6 characters.
+                    </small>
+
+                    <small
+                        class="error-message"
+                        id="passwordError"
+                    ></small>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="confirmPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <small
+                        class="error-message"
+                        id="confirmPasswordError"
+                    ></small>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-full"
+                >
+                    Create Account
+                </button>
+
+
+                <div
+                    id="registerMessage"
+                    class="form-message"
+                ></div>
+
+
+            </form>
+
+
+            <div class="auth-footer">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login here
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

@@ -86,6 +86,22 @@
       category: "mini",
       stack: "full-stack",
     },
+    {
+      title: "Department Website",
+      description: "A simple website for computer science department, with Home Page, Login, Registration form, About Us.",
+      folder: "department_website",
+      tech: ["HTML5", "CSS", "Javascript", "Nodejs", "Expressjs", "MongoDB Atlas", "Vercel"],
+      category: "major",
+      stack: "full-stack",
+    },
+    {
+      title: "Ajax",
+      description: "Use Ajax and demonstrate its use by fetching data from an api and then display the data in the webpage.",
+      folder: "Ajex",
+      tech: ["Html5", "CSS", "JS", "Nodjs", "Ajax"],
+      category: "medium",
+      stack: "full-stack",
+    },
     // {
     //   title: "Portfolio Website",
     //   description:
