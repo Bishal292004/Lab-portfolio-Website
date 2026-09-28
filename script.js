@@ -95,20 +95,20 @@
       stack: "full-stack",
     },
     {
-      title: "Ajax",
-      description: "Use Ajax and demonstrate its use by fetching data from an api and then display the data in the webpage.",
-      folder: "Ajex",
-      tech: ["Html5", "CSS", "JS", "Nodjs", "Ajax"],
-      category: "medium",
-      stack: "full-stack",
-    },
-    {
       title: "Company website",
       description: "A website for a company where thw employee and the admin both can login and view their details. The admin can view other employees and also edit their details, but the employee can only view their details and the admin details.",
       folder: "Company/frontend",
       tech: ["HTML5", "CSS", "Javascript", "Nodejs", "Expressjs", "MongoDB Atlas", "Vercel"],
       category: "Medium",
       stack: "Full-stack"
+    },
+    {
+      title: "Ajax",
+      description: "Use Ajax and demonstrate its use by fetching data from an api and then display the data in the webpage.",
+      folder: "Ajex",
+      tech: ["Html5", "CSS", "JS", "Nodjs", "Ajax"],
+      category: "medium",
+      stack: "full-stack",
     }
     // {
     //   title: "Portfolio Website",
