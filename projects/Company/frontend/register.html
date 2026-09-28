@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | TechNova Solutions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+<header class="site-header">
+    <nav class="navbar container">
+        <a class="brand" href="index.html">TechNova<span>Solutions</span></a>
+        <a href="index.html">Back to Home</a>
+    </nav>
+</header>
+
+<main class="auth-main">
+    <section class="auth-card wide">
+        <p class="eyebrow">JOIN THE TEAM</p>
+        <h1>Employee registration</h1>
+        <p class="muted">Create an employee account.</p>
+
+        <div id="message" class="message hidden"></div>
+
+        <form id="register-form" class="form-grid">
+            <div>
+                <label for="name">Full name</label>
+                <input id="name" required minlength="2">
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" required>
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" required minlength="8">
+            </div>
+
+            <div>
+                <label for="confirmPassword">Confirm password</label>
+                <input id="confirmPassword" type="password" required minlength="8">
+            </div>
+
+            <div>
+                <label for="phone">Phone number</label>
+                <input id="phone" required>
+            </div>
+
+            <div>
+                <label for="department">Department</label>
+                <select id="department" required>
+                    <option value="" disabled selected>Select a department</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="Product">Product</option>
+                    <option value="Design">Design</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Operations">Operations</option>
+                    <option value="Customer Success">Customer Success</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="position">Position / Designation</label>
+                <select id="position" required>
+                    <option value="" disabled selected>Select a position</option>
+                    <option value="Software Engineer">Software Engineer</option>
+                    <option value="Product Manager">Product Manager</option>
+                    <option value="UX/UI Designer">UX/UI Designer</option>
+                    <option value="Marketing Specialist">Marketing Specialist</option>
+                    <option value="Sales Executive">Sales Executive</option>
+                    <option value="HR Specialist">HR Specialist</option>
+                    <option value="Finance Analyst">Finance Analyst</option>
+                    <option value="Operations Coordinator">Operations Coordinator</option>
+                    <option value="Customer Success Specialist">Customer Success Specialist</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="experience">Experience</label>
+                <select id="experience" required>
+                    <option value="" disabled selected>Select experience</option>
+                    <option value="Entry level">Entry level</option>
+                    <option value="1-3 years">1-3 years</option>
+                    <option value="3-5 years">3-5 years</option>
+                    <option value="5-8 years">5-8 years</option>
+                    <option value="8+ years">8+ years</option>
+                </select>
+            </div>
+
+            <div class="full">
+                <button id="register-button" class="btn btn-primary btn-full" type="submit">
+                    Register
+                </button>
+            </div>
+        </form>
+
+        <p class="form-footer">
+            Already registered?
+            <a href="login.html">Login</a>
+        </p>
+    </section>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

@@ -1,302 +1,129 @@
-// =====================================================
-// REGISTRATION FORM
-// =====================================================
-
 const registerForm = document.getElementById("registerForm");
 
-
-// -----------------------------------------------------
-// PASSWORD SHOW / HIDE
-// -----------------------------------------------------
-
-const passwordToggles =
-    document.querySelectorAll(".password-toggle");
-
-
-passwordToggles.forEach(button => {
-
+if (registerForm) {
+  document.querySelectorAll(".password-toggle").forEach((button) => {
     button.addEventListener("click", () => {
-
-        const targetId =
-            button.getAttribute("data-target");
-
-        const passwordInput =
-            document.getElementById(targetId);
-
-
-        if (passwordInput.type === "password") {
-
-            passwordInput.type = "text";
-
-            button.textContent = "Hide";
-
-        } else {
-
-            passwordInput.type = "password";
-
-            button.textContent = "Show";
-
-        }
-
+      const input = document.getElementById(button.dataset.target);
+      input.type = input.type === "password" ? "text" : "password";
+      button.textContent = input.type === "password" ? "Show" : "Hide";
     });
+  });
 
-});
-
-
-// -----------------------------------------------------
-// REGISTRATION
-// -----------------------------------------------------
-
-registerForm.addEventListener("submit", function (event) {
-
-    // Prevent page refresh
+  registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-
-
-    // Clear previous errors
-    clearErrors();
-
-
-    // Get form values
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const studentId =
-        document.getElementById("studentId").value.trim();
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const course =
-        document.getElementById("course").value;
-
-    const semester =
-        document.getElementById("semester").value;
-
-    const password =
-        document.getElementById("password").value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-
-    let isValid = true;
-
-
-    // -------------------------------------------------
-    // VALIDATION
-    // -------------------------------------------------
-
-    if (name.length < 3) {
-
-        showError(
-            "nameError",
-            "Please enter your full name."
-        );
-
-        isValid = false;
-
-    }
-
-
-    const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-
-    if (!emailPattern.test(email)) {
-
-        showError(
-            "emailError",
-            "Please enter a valid email address."
-        );
-
-        isValid = false;
-
-    }
-
-
-    if (studentId.length < 3) {
-
-        showError(
-            "studentIdError",
-            "Please enter your student/roll number."
-        );
-
-        isValid = false;
-
-    }
-
-
-    const phonePattern =
-        /^[0-9]{10}$/;
-
-
-    if (!phonePattern.test(phone)) {
-
-        showError(
-            "phoneError",
-            "Phone number must contain 10 digits."
-        );
-
-        isValid = false;
-
-    }
-
-
-    if (!course) {
-
-        isValid = false;
-
-        alert("Please select your course.");
-
-    }
-
-
-    if (!semester) {
-
-        isValid = false;
-
-        alert("Please select your semester.");
-
-    }
-
-
-    if (password.length < 6) {
-
-        showError(
-            "passwordError",
-            "Password must contain at least 6 characters."
-        );
-
-        isValid = false;
-
-    }
-
-
-    if (password !== confirmPassword) {
-
-        showError(
-            "confirmPasswordError",
-            "Passwords do not match."
-        );
-
-        isValid = false;
-
-    }
-
-
-    if (!isValid) {
-
-        return;
-
-    }
-
-
-    // -------------------------------------------------
-    // USER OBJECT
-    // -------------------------------------------------
-
-    const userData = {
-
-        name: name,
-
-        email: email,
-
-        studentId: studentId,
-
-        phone: phone,
-
-        course: course,
-
-        semester: semester,
-
-        password: password
-
+    clearRegisterErrors();
+
+    const data = {
+      fullName: value("fullName"),
+      email: value("email").toLowerCase(),
+      studentID: value("studentID"),
+      dob: value("dob"),
+      phone: value("phone"),
+      gender: value("gender"),
+      course: value("course"),
+      bloodGroup: value("bloodGroup"),
+      address: value("address"),
+      password: document.getElementById("password").value,
+      confirmPassword: document.getElementById("confirmPassword").value,
     };
 
+    let valid = true;
 
-    /*
-        FUTURE EXPRESS API
-
-        Later, this section can become:
-
-        fetch("/api/auth/register", {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(userData)
-        });
-
-    */
-
-
-    console.log("Registration data:", userData);
-
-
-    // -------------------------------------------------
-    // FRONTEND DEMO MESSAGE
-    // -------------------------------------------------
-
-    const message =
-        document.getElementById("registerMessage");
-
-
-    message.textContent =
-        "Registration form is valid. Backend connection will be added later.";
-
-    message.className =
-        "form-message success";
-
-
-});
-
-
-// =====================================================
-// HELPER FUNCTIONS
-// =====================================================
-
-function showError(elementId, message) {
-
-    const element =
-        document.getElementById(elementId);
-
-    if (element) {
-
-        element.textContent = message;
-
+    if (data.fullName.length < 3) {
+      error("fullNameError", "Enter your full name.");
+      valid = false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      error("emailError", "Enter a valid email address.");
+      valid = false;
+    }
+    if (data.studentID.length < 3) {
+      error("studentIDError", "Enter your student ID.");
+      valid = false;
+    }
+    if (!/^[0-9]{10}$/.test(data.phone)) {
+      error("phoneError", "Phone number must contain 10 digits.");
+      valid = false;
+    }
+    if (!data.dob) {
+      error("dobError", "Select your date of birth.");
+      valid = false;
+    }
+    if (!data.gender) {
+      error("genderError", "Select your gender.");
+      valid = false;
+    }
+    if (!data.course) {
+      error("courseError", "Select your course.");
+      valid = false;
+    }
+    if (!data.bloodGroup) {
+      error("bloodGroupError", "Select your blood group.");
+      valid = false;
+    }
+    if (data.address.length < 5) {
+      error("addressError", "Enter your address.");
+      valid = false;
+    }
+    if (data.password.length < 6) {
+      error("passwordError", "Password must contain at least 6 characters.");
+      valid = false;
+    }
+    if (data.password !== data.confirmPassword) {
+      error("confirmPasswordError", "Passwords do not match.");
+      valid = false;
     }
 
+    if (!valid) return;
+
+    delete data.confirmPassword;
+    setRegisterMessage("Creating your account...", "");
+
+    try {
+      const response = await fetch(`https://department-website-backend.vercel.app/api/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        setRegisterMessage(result.message || "Registration failed.", "error");
+        return;
+      }
+
+      localStorage.setItem("studentToken", result.token);
+      localStorage.setItem("studentData", JSON.stringify(result.student));
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      setRegisterMessage(
+        "Cannot connect to the backend. Make sure the server is running.",
+        "error",
+      );
+    }
+  });
 }
 
+function value(id) {
+  return document.getElementById(id).value.trim();
+}
 
-function clearErrors() {
+function error(id, message) {
+  document.getElementById(id).textContent = message;
+}
 
-    const errors =
-        document.querySelectorAll(".error-message");
+function clearRegisterErrors() {
+  document
+    .querySelectorAll(".error-message")
+    .forEach((e) => (e.textContent = ""));
+  setRegisterMessage("", "");
+}
 
-    errors.forEach(error => {
-
-        error.textContent = "";
-
-    });
-
-
-    const message =
-        document.getElementById("registerMessage");
-
-    if (message) {
-
-        message.textContent = "";
-
-        message.className = "form-message";
-
-    }
-
+function setRegisterMessage(message, type) {
+  const element = document.getElementById("registerMessage");
+  if (element) {
+    element.textContent = message;
+    element.className = `form-message ${type}`;
+  }
 }

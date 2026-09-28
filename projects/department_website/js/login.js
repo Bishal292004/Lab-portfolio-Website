@@ -1,203 +1,72 @@
-// =====================================================
-// LOGIN FORM
-// =====================================================
+const loginForm = document.getElementById("loginForm");
 
-const loginForm =
-    document.getElementById("loginForm");
-
-
-// -----------------------------------------------------
-// PASSWORD SHOW / HIDE
-// -----------------------------------------------------
-
-const passwordToggles =
-    document.querySelectorAll(".password-toggle");
-
-
-passwordToggles.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const targetId =
-            button.getAttribute("data-target");
-
-        const passwordInput =
-            document.getElementById(targetId);
-
-
-        if (passwordInput.type === "password") {
-
-            passwordInput.type = "text";
-
-            button.textContent = "Hide";
-
-        } else {
-
-            passwordInput.type = "password";
-
-            button.textContent = "Show";
-
-        }
-
+if (loginForm) {
+    document.querySelectorAll(".password-toggle").forEach(button => {
+        button.addEventListener("click", () => {
+            const input = document.getElementById(button.dataset.target);
+            input.type = input.type === "password" ? "text" : "password";
+            button.textContent = input.type === "password" ? "Show" : "Hide";
+        });
     });
 
-});
+    loginForm.addEventListener("submit", async event => {
+        event.preventDefault();
+        clearLoginErrors();
 
+        const identifier = document.getElementById("identifier").value.trim();
+        const password = document.getElementById("loginPassword").value;
+        let valid = true;
 
-// -----------------------------------------------------
-// LOGIN
-// -----------------------------------------------------
+        if (identifier.length < 3) {
+            showLoginError("identifierError", "Enter your email or student ID.");
+            valid = false;
+        }
+        if (!password) {
+            showLoginError("loginPasswordError", "Please enter your password.");
+            valid = false;
+        }
+        if (!valid) return;
 
-loginForm.addEventListener("submit", function (event) {
+        setLoginMessage("Logging in...", "");
 
-    event.preventDefault();
+        try {
+            const response = await fetch(`https://department-website-backend.vercel.app/api/auth/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ identifier, password })
+            });
 
+            const data = await response.json();
 
-    clearLoginErrors();
+            if (!response.ok) {
+                setLoginMessage(data.message || "Login failed.", "error");
+                return;
+            }
 
+            localStorage.setItem("studentToken", data.token);
+            localStorage.setItem("studentData", JSON.stringify(data.student));
 
-    const identifier =
-        document
-            .getElementById("identifier")
-            .value
-            .trim();
-
-
-    const password =
-        document
-            .getElementById("loginPassword")
-            .value;
-
-
-    let isValid = true;
-
-
-    // -------------------------------------------------
-    // VALIDATION
-    // -------------------------------------------------
-
-    if (identifier.length < 3) {
-
-        showLoginError(
-            "identifierError",
-            "Enter your email or student/roll number."
-        );
-
-        isValid = false;
-
-    }
-
-
-    if (password.length === 0) {
-
-        showLoginError(
-            "loginPasswordError",
-            "Please enter your password."
-        );
-
-        isValid = false;
-
-    }
-
-
-    if (!isValid) {
-
-        return;
-
-    }
-
-
-    // -------------------------------------------------
-    // LOGIN DATA
-    // -------------------------------------------------
-
-    const loginData = {
-
-        identifier: identifier,
-
-        password: password
-
-    };
-
-
-    /*
-        FUTURE EXPRESS API
-
-        Later this can become:
-
-        fetch("/api/auth/login", {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify(loginData)
-        });
-
-    */
-
-
-    console.log("Login data:", loginData);
-
-
-    // -------------------------------------------------
-    // FRONTEND DEMO
-    // -------------------------------------------------
-
-    const message =
-        document.getElementById("loginMessage");
-
-
-    message.textContent =
-        "Login form is valid. Backend authentication will be added later.";
-
-    message.className =
-        "form-message success";
-
-});
-
-
-// =====================================================
-// HELPER FUNCTIONS
-// =====================================================
-
-function showLoginError(elementId, message) {
-
-    const element =
-        document.getElementById(elementId);
-
-    if (element) {
-
-        element.textContent = message;
-
-    }
-
+            window.location.href = "dashboard.html";
+        } catch (error) {
+            setLoginMessage("Cannot connect to the backend. Make sure the server is running.", "error");
+        }
+    });
 }
 
+function showLoginError(id, message) {
+    const element = document.getElementById(id);
+    if (element) element.textContent = message;
+}
 
 function clearLoginErrors() {
+    document.querySelectorAll(".error-message").forEach(e => e.textContent = "");
+    setLoginMessage("", "");
+}
 
-    const errors =
-        document.querySelectorAll(".error-message");
-
-    errors.forEach(error => {
-
-        error.textContent = "";
-
-    });
-
-
-    const message =
-        document.getElementById("loginMessage");
-
-
-    if (message) {
-
-        message.textContent = "";
-
-        message.className = "form-message";
-
+function setLoginMessage(message, type) {
+    const element = document.getElementById("loginMessage");
+    if (element) {
+        element.textContent = message;
+        element.className = `form-message ${type}`;
     }
-
 }

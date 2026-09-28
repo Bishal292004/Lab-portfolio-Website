@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard | TechNova</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+<header class="dashboard-header">
+    <div class="container dashboard-nav">
+        <a class="brand" href="index.html">TechNova<span>Solutions</span></a>
+        <div class="nav-user">
+            <a class="nav-home" href="index.html">Home</a>
+            <div class="profile-menu">
+                <button id="profile-toggle" class="profile-toggle" type="button" aria-expanded="false">
+                    <span class="profile-avatar">E</span>
+                    <span id="nav-user-name">Employee</span>
+                    <span class="profile-chevron" aria-hidden="true">&#9662;</span>
+                </button>
+                <div id="profile-dropdown" class="profile-dropdown hidden">
+                    <span class="profile-label">SIGNED IN AS EMPLOYEE</span>
+                    <a href="employee-dashboard.html">My dashboard</a>
+                    <a href="index.html">Home page</a>
+                    <button id="logout-button" class="profile-logout" type="button">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container dashboard-main">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">EMPLOYEE PORTAL</p>
+            <h1>Welcome, <span id="welcome-name">Employee</span></h1>
+            <p class="muted">View your profile and company administration details.</p>
+        </div>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+
+    <section class="dashboard-grid">
+        <article class="panel">
+            <div class="panel-header">
+                <div>
+                    <p class="eyebrow">MY PROFILE</p>
+                    <h2>Employee information</h2>
+                </div>
+            </div>
+            <div id="profile-content" class="profile-list">
+                <p class="loading">Loading profile...</p>
+            </div>
+        </article>
+
+        <article class="panel">
+            <div class="panel-header">
+                <div>
+                    <p class="eyebrow">COMPANY</p>
+                    <h2>Admin details</h2>
+                </div>
+            </div>
+            <div id="admins-content" class="admin-list">
+                <p class="loading">Loading admin details...</p>
+            </div>
+        </article>
+    </section>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/employee.js"></script>
+</body>
+</html>

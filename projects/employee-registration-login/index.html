@@ -3,87 +3,897 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
+
+    <title>Employee Portal | Welcome</title>
 
     <style>
+        /* =========================
+           RESET & GLOBAL STYLES
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 600px;
-            padding: 50px 30px;
-            text-align: center;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            color: #222;
-            margin-bottom: 15px;
-            font-size: 36px;
-        }
-
-        p {
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #172033;
+            background: #f8fafc;
             line-height: 1.6;
         }
 
-        .register-btn {
-            border: none;
-            padding: 15px 35px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background: #2563eb;
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            width: 100%;
+            height: 72px;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 21px;
+            font-weight: 700;
+            color: #172033;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        .nav-register {
+            padding: 10px 20px;
+            background: #2563eb;
+            color: white !important;
+            border-radius: 8px;
+        }
+
+        .nav-register:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+            min-height: 610px;
+            padding: 80px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+
+            background:
+                radial-gradient(circle at 85% 20%, rgba(37, 99, 235, 0.12), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(124, 58, 237, 0.08), transparent 30%),
+                #f8fafc;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 14px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 64px);
+            line-height: 1.08;
+            color: #111827;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero-description {
+            max-width: 560px;
+            color: #64748b;
+            font-size: 18px;
+            margin-bottom: 34px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            border: none;
+            padding: 15px 28px;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.20);
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.28);
+        }
+
+        .secondary-btn {
+            padding: 14px 28px;
+            border-radius: 9px;
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #374151;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .register-btn:hover {
-            background: #1d4ed8;
+        .secondary-btn:hover {
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+
+        /* =========================
+           HERO VISUAL
+        ========================== */
+
+        .hero-visual {
+            width: 430px;
+            min-width: 350px;
+            height: 390px;
+            position: relative;
+        }
+
+        .visual-main {
+            width: 330px;
+            height: 330px;
+            position: absolute;
+            top: 25px;
+            right: 10px;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #2563eb, #4f46e5);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .employee-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            color: white;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .floating-card strong {
+            display: block;
+            color: #172033;
+            font-size: 14px;
+        }
+
+        .floating-card span {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: #eff6ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .card-one {
+            left: 0;
+            top: 70px;
+        }
+
+        .card-two {
+            right: 0;
+            bottom: 55px;
+        }
+
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 28px 7%;
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 25px;
+            color: #172033;
+        }
+
+        .stat p {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================== */
+
+        .features-section {
+            padding: 85px 7%;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .section-label {
+            color: #2563eb;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .features-section h2 {
+            font-size: 36px;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            color: #64748b;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .feature-card {
+            padding: 30px 25px;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            background: #ffffff;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #bfdbfe;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: #eff6ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 19px;
+            color: #172033;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           REGISTRATION CTA
+        ========================== */
+
+        .registration-section {
+            padding: 80px 7%;
+            background: #f8fafc;
+        }
+
+        .registration-box {
+            max-width: 1100px;
+            margin: auto;
+            padding: 55px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #1e3a8a, #4338ca);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .registration-box h2 {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .registration-box p {
+            color: #dbeafe;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            border: none;
+            background: white;
+            color: #1d4ed8;
+            padding: 15px 26px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: white;
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 60px;
+            }
+
+            .hero-content {
+                max-width: 700px;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                margin-top: 20px;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .registration-box {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-links a:not(.nav-register) {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 5%;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-visual {
+                width: 100%;
+                min-width: 0;
+                height: 330px;
+            }
+
+            .visual-main {
+                width: 260px;
+                height: 260px;
+                right: 50%;
+                transform: translateX(50%);
+            }
+
+            .floating-card {
+                padding: 12px 14px;
+            }
+
+            .card-one {
+                left: 5%;
+                top: 55px;
+            }
+
+            .card-two {
+                right: 5%;
+                bottom: 30px;
+            }
+
+            .stats {
+                gap: 25px;
+                padding: 25px 5%;
+            }
+
+            .stat h3 {
+                font-size: 20px;
+            }
+
+            .features-section {
+                padding: 65px 5%;
+            }
+
+            .features-section h2 {
+                font-size: 30px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .registration-section {
+                padding: 60px 5%;
+            }
+
+            .registration-box {
+                padding: 40px 25px;
+            }
+
+            .registration-box h2 {
+                font-size: 28px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1>Welcome</h1>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header class="navbar">
+
+        <a href="#" class="logo">
+            <div class="logo-icon">EP</div>
+            Employee Portal
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+
+            <a
+                href="https://bishal292004.github.io/Employee_Registration_Frontend/"
+                class="nav-register">
+                Register / Login
+            </a>
+            
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    EMPLOYEE MANAGEMENT PORTAL
+                </div>
+
+                <h1>
+                    Welcome to your
+                    <span>Employee Portal.</span>
+                </h1>
+
+                <p class="hero-description">
+                    A simple and secure platform for employee registration
+                    and workforce management. Get started by creating your
+                    employee profile.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button
+                        class="primary-btn"
+                        onclick="goToRegistration()">
+                        Register as Employee →
+                    </button>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="scrollToFeatures()">
+                        Learn More
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="hero-visual">
+
+                <div class="visual-main">
+                    <div class="employee-icon">
+                        👤
+                    </div>
+                </div>
+
+                <div class="floating-card card-one">
+
+                    <div class="card-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Easy Registration</strong>
+                        <span>Quick & simple process</span>
+                    </div>
+
+                </div>
+
+
+                <div class="floating-card card-two">
+
+                    <div class="card-icon">
+                        🔒
+                    </div>
+
+                    <div>
+                        <strong>Secure Platform</strong>
+                        <span>Your information matters</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+
+        <section class="stats">
+
+            <div class="stat">
+                <h3>01</h3>
+                <p>Simple Registration</p>
+            </div>
+
+            <div class="stat">
+                <h3>24/7</h3>
+                <p>Portal Access</p>
+            </div>
+
+            <div class="stat">
+                <h3>100%</h3>
+                <p>Digital Process</p>
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FEATURES
+        ========================== -->
+
+        <section class="features-section" id="features">
+
+            <div class="section-label">
+                WHY USE THE PORTAL?
+            </div>
+
+            <h2>
+                Everything You Need to Get Started
+            </h2>
+
+            <p class="section-description">
+                Our employee portal makes the registration process
+                straightforward, organized and convenient.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        01
+                    </div>
+
+                    <h3>
+                        Easy Registration
+                    </h3>
+
+                    <p>
+                        Register your employee information through a
+                        simple and user-friendly registration process.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        02
+                    </div>
+
+                    <h3>
+                        Organized Information
+                    </h3>
+
+                    <p>
+                        Keep employee information structured and
+                        accessible through a centralized platform.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        03
+                    </div>
+
+                    <h3>
+                        Secure Access
+                    </h3>
+
+                    <p>
+                        Designed with security in mind to help protect
+                        important employee information.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             REGISTRATION CTA
+        ========================== -->
+
+        <section class="registration-section">
+
+            <div class="registration-box">
+
+                <div>
+
+                    <h2>
+                        Ready to Join the Team?
+                    </h2>
+
+                    <p>
+                        Complete your employee registration and
+                        get started with the portal today.
+                    </p>
+
+                </div>
+
+                <button
+                    class="cta-button"
+                    onclick="goToRegistration()">
+                    Employee Registration →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            Employee Portal
+        </div>
 
         <p>
-            Welcome to our employee portal.
-            Click the button below to continue to employee registration.
+            © 2026 Employee Portal. All rights reserved.
         </p>
 
-        <button class="register-btn" onclick="goToRegistration()">
-            Employee Registration
-        </button>
-    </div>
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
 
     <script>
+
         function goToRegistration() {
-            // Replace this URL with your actual hosted registration webpage
-            window.location.href = "https://bishal292004.github.io/Employee_Registration_Frontend/";
+
+            window.location.href =
+                "https://bishal292004.github.io/Employee_Registration_Frontend/";
+
         }
+
+
+        function scrollToFeatures() {
+
+            document
+                .getElementById("features")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
     </script>
 
 </body>

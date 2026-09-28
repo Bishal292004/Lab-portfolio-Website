@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | TechNova</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+<header class="dashboard-header">
+    <div class="container dashboard-nav">
+        <a class="brand" href="index.html">TechNova<span>Solutions</span></a>
+        <div class="nav-user">
+            <a class="nav-home" href="index.html">Home</a>
+            <div class="profile-menu">
+                <button id="profile-toggle" class="profile-toggle" type="button" aria-expanded="false">
+                    <span class="profile-avatar">A</span>
+                    <span id="nav-user-name">Admin</span>
+                    <span class="profile-chevron" aria-hidden="true">&#9662;</span>
+                </button>
+                <div id="profile-dropdown" class="profile-dropdown hidden">
+                    <span class="profile-label">SIGNED IN AS ADMIN</span>
+                    <a href="admin-dashboard.html">Dashboard</a>
+                    <a href="index.html">Home page</a>
+                    <button id="logout-button" class="profile-logout" type="button">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container dashboard-main">
+    <div class="page-heading">
+        <div>
+            <p class="eyebrow">ADMIN PORTAL</p>
+            <h1>Employee management</h1>
+            <p class="muted">View and manage registered users.</p>
+        </div>
+        <div class="stat-card">
+            <span id="employee-count">0</span>
+            <small>Total users</small>
+        </div>
+    </div>
+
+    <div id="message" class="message hidden"></div>
+
+    <section class="panel">
+        <div class="panel-header table-header">
+            <div>
+                <p class="eyebrow">DIRECTORY</p>
+                <h2>All employees and admins</h2>
+            </div>
+            <input id="search-input" class="search-input" type="search" placeholder="Search users...">
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Experience</th>
+                        <th>Role</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="employee-table-body">
+                    <tr>
+                        <td colspan="9" class="loading">Loading users...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<div id="edit-modal" class="modal hidden">
+    <div class="modal-card">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">EDIT USER</p>
+                <h2>Update employee</h2>
+            </div>
+            <button id="close-modal" class="icon-button" type="button">&times;</button>
+        </div>
+
+        <div id="edit-message" class="message hidden"></div>
+
+        <form id="edit-form">
+            <input id="edit-id" type="hidden">
+
+            <label for="edit-name">Name</label>
+            <input id="edit-name" required>
+
+            <label for="edit-phone">Phone</label>
+            <input id="edit-phone" required>
+
+            <label for="edit-department">Department</label>
+            <input id="edit-department" required>
+
+            <label for="edit-position">Position</label>
+            <input id="edit-position" required>
+
+            <label for="edit-role">Role</label>
+            <select id="edit-role" required>
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <div class="modal-actions">
+                <button type="button" id="cancel-edit" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

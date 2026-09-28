@@ -102,6 +102,14 @@
       category: "medium",
       stack: "full-stack",
     },
+    {
+      title: "Company website",
+      description: "A website for a company where thw employee and the admin both can login and view their details. The admin can view other employees and also edit their details, but the employee can only view their details and the admin details.",
+      folder: "Company/frontend",
+      tech: ["HTML5", "CSS", "Javascript", "Nodejs", "Expressjs", "MongoDB Atlas", "Vercel"],
+      category: "Medium",
+      stack: "Full-stack"
+    }
     // {
     //   title: "Portfolio Website",
     //   description:
