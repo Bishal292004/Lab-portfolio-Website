@@ -3,41 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A beginner-friendly AJAX news card website.">
-    <title>Orbit News | AJAX News Cards</title>
+    <meta name="description" content="Explore the latest stories from the world of space with Orbit News.">
+    <title>Orbit News | Space, in focus</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="site-header">
-        <div class="header-content">
-            <p class="eyebrow">AJAX / JAVASCRIPT PROJECT</p>
-            <h1>Orbit <span>News</span></h1>
-            <p class="subtitle">Fresh stories from the world of space, delivered one request at a time.</p>
-        </div>
+<body class="home-page">
+    <header class="home-header">
+        <a class="home-brand" href="index.html" aria-label="Orbit News home">ORBIT <span>NEWS</span></a>
+        <a class="home-nav-link" href="news.html">Latest stories <span aria-hidden="true">↗</span></a>
     </header>
-    <main class="page-content">
-        <section class="news-section" aria-labelledby="latest-news-heading">
-            <div class="section-heading">
-                <div>
-                    <p class="section-label">THE LATEST</p>
-                    <h2 id="latest-news-heading">Stories worth exploring</h2>
-                </div>
-                <p id="article-count" class="article-count" aria-live="polite"></p>
+    <main>
+        <section class="home-hero" aria-labelledby="home-heading">
+            <div class="home-hero-content">
+                <p class="eyebrow">THE UNIVERSE, IN MOTION</p>
+                <h1 id="home-heading">Space is<br>never <span>standing still.</span></h1>
+                <p class="home-intro">Go beyond the headlines. Get the latest missions, discoveries, and stories from across the cosmos.</p>
+                <a class="explore-button" href="news.html">Explore the latest stories <span aria-hidden="true">→</span></a>
             </div>
-
-            <p id="loading-message" class="status-message" role="status">Loading the latest stories...</p>
-            <p id="error-message" class="status-message error-message" role="alert" hidden></p>
-            <p id="empty-message" class="status-message" hidden>No stories were found right now.</p>
-
-            <div id="news-container" class="news-grid"></div>
-
-            <div class="load-more-area">
-                <button id="load-more-button" class="load-more-button" type="button">
-                    Load More News <span aria-hidden="true">↓</span>
-                </button>
-            </div>
+            <p class="hero-caption">A closer look at our changing universe</p>
+        </section>
+        <section class="home-footer" aria-label="About Orbit News">
+            <p>Curiosity has no horizon.</p>
+            <span>Fresh spaceflight reporting, gathered from around the web.</span>
         </section>
     </main>
-    <script src="script.js"></script>
 </body>
 </html>
