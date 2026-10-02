@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Contact Manager</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="container nav">
+        <a class="logo" href="index.html">Contact<span>Manager</span></a
+        ><button id="addBtn" class="btn primary">+ Add Contact</button>
+      </div>
+    </header>
+    <main class="container">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">CONTACT MANAGEMENT</p>
+          <h1>Keep your contacts organized.</h1>
+          <p class="muted">
+            Add, view, edit and delete contact entries from one simple
+            dashboard.
+          </p>
+        </div>
+        <div class="stat"><span>Total Contacts</span><b id="count">0</b></div>
+      </section>
+      <section class="toolbar">
+        <input
+          id="search"
+          type="search"
+          placeholder="Search by name, email, phone or company..."
+        /><button id="refresh" class="btn secondary">Refresh</button>
+      </section>
+      <div id="message" class="message hidden"></div>
+      <div id="loading" class="loading">Loading contacts...</div>
+      <div id="empty" class="empty hidden">
+        <h2>No contacts found</h2>
+        <p class="muted">Add your first contact to get started.</p>
+        <button id="emptyAdd" class="btn primary">Add Contact</button>
+      </div>
+      <section id="grid" class="grid"></section>
+    </main>
+    <div id="modal" class="overlay hidden">
+      <div class="modal">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">CONTACT</p>
+            <h2 id="modalTitle">Add Contact</h2>
+          </div>
+          <button id="close" class="close">&times;</button>
+        </div>
+        <form id="form">
+          <input type="hidden" id="id" />
+          <div class="form-grid">
+            <div>
+              <label>Name *</label
+              ><input id="name" required maxlength="100" /><small
+                id="nameErr"
+              ></small>
+            </div>
+            <div>
+              <label>Phone *</label
+              ><input id="phone" required maxlength="20" /><small
+                id="phoneErr"
+              ></small>
+            </div>
+            <div class="full">
+              <label>Email *</label
+              ><input id="email" type="email" required maxlength="150" /><small
+                id="emailErr"
+              ></small>
+            </div>
+            <div>
+              <label>Company</label><input id="company" maxlength="100" />
+            </div>
+            <div>
+              <label>Category</label
+              ><select id="category">
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Family</option>
+                <option>Friends</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="full">
+              <label>Address</label
+              ><textarea id="address" rows="3" maxlength="300"></textarea>
+            </div>
+            <div class="full">
+              <label>Notes</label
+              ><textarea id="notes" rows="3" maxlength="500"></textarea>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="button" id="cancel" class="btn secondary">
+              Cancel</button
+            ><button class="btn primary">Save Contact</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="deleteModal" class="overlay hidden">
+      <div class="confirm">
+        <h2>Delete Contact?</h2>
+        <p class="muted">This action cannot be undone.</p>
+        <div class="actions">
+          <button id="deleteCancel" class="btn secondary">Cancel</button
+          ><button id="deleteConfirm" class="btn danger">Delete</button>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.js"></script>
+  </body>
+</html>

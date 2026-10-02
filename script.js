@@ -109,6 +109,14 @@
       tech: ["Html5", "CSS", "JS", "Nodjs", "Ajax"],
       category: "medium",
       stack: "full-stack",
+    },
+    {
+      title: "Contact Management",
+      description: "Use javascript and express to create a contact management application with features like contact add, edit and delete options.",
+      folder: "Contact",
+      tech: ["Html5", "CSS", "JS", "Nodjs", "Express", "MongoDB Atlas"],
+      category: "medium",
+      stack: "full-stack",
     }
     // {
     //   title: "Portfolio Website",
